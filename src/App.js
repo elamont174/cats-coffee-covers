@@ -1,12 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
+import logo from "../src/components/assets/ccc-logo.png";
 
-function App() {
+const NavBar = () => {
   return (
-    <div className="App">
-      <h1>Cats, Coffee and Covers</h1>
-    </div>
+    <Navbar expand="md" fixed="top">
+      <Container>
+        <Navbar.Brand>
+          <img src={logo} alt="logo" height="45" />
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto text-left">
+            <Nav.Link>
+              <i className="fas fa-home"></i>Home
+            </Nav.Link>
+            <Nav.Link>
+              <i className="fas fa-sign-in-alt"></i>Log in
+            </Nav.Link>
+            <Nav.Link>
+              <i className="fas fa-user-plus"></i>Register
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
-}
+};
 
-export default App;
+export default NavBar;
