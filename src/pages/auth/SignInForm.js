@@ -100,7 +100,7 @@ function SignInForm() {
           </Form>
         </Container>
         <Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signup">
+          <Link className={styles.Link} to="/register">
             Don't have an account? <span>Register now!</span>
           </Link>
         </Container>
