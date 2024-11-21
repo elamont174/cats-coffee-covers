@@ -26,13 +26,13 @@ const NavBar = () => {
     }
   };
 
-  const addPostIcon = (
+  const addBookReviewIcon = (
     <NavLink
       className={styles.NavLink}
       activeClassName={styles.Active}
       to="/book_reviews/create"
     >
-      <i className="far fa-plus-square"></i> New post
+      <i className="far fa-plus-square"></i> New review
     </NavLink>
   );
   const loggedInIcons = (
@@ -47,7 +47,7 @@ const NavBar = () => {
       <NavLink
         className={styles.NavLink}
         activeClassName={styles.Active}
-        to="/liked"
+        to="/likes"
       >
         <i className="fas fa-heart"></i> Liked
       </NavLink>
@@ -94,7 +94,7 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
-        {currentUser && addPostIcon}
+        {currentUser && addBookReviewIcon}
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}

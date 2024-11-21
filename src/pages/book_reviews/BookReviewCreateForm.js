@@ -12,31 +12,31 @@ import Asset from "../../components/Asset";
 
 import Upload from "../../assets/upload.png";
 
-import styles from "../../styles/PostCreateEditForm.module.css";
+import styles from "../../styles/BookReviewCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function PostCreateForm() {
+function BookReviewCreateForm() {
   const [errors, setErrors] = useState({});
 
-  const [postData, setPostData] = useState({
+  const [bookReviewData, setBookReviewData] = useState({
     book_title: "",
     author: "",
     genre: "",
     your_review: "",
     image: "",
   });
-  const { book_title, author, genre, your_review, image } = postData;
+  const { book_title, author, genre, your_review, image } = bookReviewData;
 
   const imageInput = useRef(null);
   const history = useHistory();
 
   const handleChange = (event) => {
-    setPostData({
-      ...postData,
+    setBookReviewData({
+      ...bookReviewData,
       [event.target.name]: event.target.value,
     });
   };
@@ -44,8 +44,8 @@ function PostCreateForm() {
   const handleChangeImage = (event) => {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
-      setPostData({
-        ...postData,
+      setBookReviewData({
+        ...bookReviewData,
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
@@ -62,7 +62,7 @@ function PostCreateForm() {
     formData.append("image", imageInput.current.files[0]);
 
     try {
-      const { data } = await axiosReq.post("/book_reviews/", formData);
+      const { data } = await axiosReq.bookReview("/book_reviews/", formData);
       history.push(`/book_reviews/${data.id}`);
     } catch (err) {
       console.log(err);
@@ -206,4 +206,4 @@ function PostCreateForm() {
   );
 }
 
-export default PostCreateForm;
+export default BookReviewCreateForm;
