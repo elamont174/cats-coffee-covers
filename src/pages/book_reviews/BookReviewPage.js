@@ -7,19 +7,29 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import BookReview from "./BookReview";
+
+import CommentCreateForm from "../comments/CommentCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
 
 function BookReviewPage() {
   const { id } = useParams();
   const [book_review, setBookReview] = useState({ results: [] });
 
+  const currentUser = useCurrentUser();
+  const profile_image = currentUser?.profile_image;
+  const [comments, setComments] = useState({ results: [] });
+
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: book_review }] = await Promise.all([
+        const [{ data: book_review }, { data: comments }] = await Promise.all([
           axiosReq.get(`/book_reviews/${id}`),
+          axiosReq.get(`/comments/?book_reviews=${id}`),
         ]);
         setBookReview({ results: [book_review] });
-        console.log(book_review);
+        setComments(comments);
       } catch (err) {
         console.log(err);
       }
@@ -32,7 +42,28 @@ function BookReviewPage() {
     <Row className="h-100">
       <Col className="py-2 p-2 p-lg-2" lg={12}>
         <p>Book Review component</p>
-        <Container className={appStyles.Content}>Comments</Container>
+        <Container className={appStyles.Content}>
+        {currentUser ? (
+            <CommentCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_image}
+              book_review={id}
+              setBookReview={setBookReview}
+              setComments={setComments}
+            />
+          ) : comments.results.length ? (
+            "Comments"
+          ) : null}
+                    {comments.results.length ? (
+            comments.results.map((comment) => (
+              <Comment key={comment.id} {...comment} />
+            ))
+          ) : currentUser ? (
+            <span>No comments yet 😿 be the first to comment!</span>
+          ) : (
+            <span>No comments... 😿</span>
+          )}
+        </Container>
       </Col>
     </Row>
   );
