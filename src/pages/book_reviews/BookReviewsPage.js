@@ -1,93 +1,86 @@
 import React, { useEffect, useState } from "react";
 
-import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
-import BookReview from "./BookReview";
-import Asset from "../../components/Asset";
-
 import appStyles from "../../App.module.css";
-import styles from "../../styles/BookReviewsPage.module.css";
-import { useLocation } from "react-router";
+import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import BookReview from "./BookReview";
+import Comment from "../comments/Comment";
 
-import NoResults from "../../assets/no-results.png";
+import CommentCreateForm from "../comments/CommentCreateForm";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
 import InfiniteScroll from "react-infinite-scroll-component";
+import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 
-function BookReviewsPage({ message, filter = "" }) {
-  const [book_reviews, setBookReviews] = useState({ results: [] });
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const { pathname } = useLocation();
+function BookReviewPage() {
+  const { id } = useParams();
+  const [book_review, setBookReview] = useState({ results: [] });
 
-  const [query, setQuery] = useState("");
+  const currentUser = useCurrentUser();
+  const profile_pic = currentUser?.profile_pic;
+  const [comments, setComments] = useState({ results: [] });
 
   useEffect(() => {
-    const fetchBookReviews = async () => {
+    const handleMount = async () => {
       try {
-        const { data } = await axiosReq.get(`/book_reviews/?${filter}search=${query}`);
-        setBookReviews(data);
-        setHasLoaded(true);
+        const [{ data: book_review }, { data: comments }] = await Promise.all([
+          axiosReq.get(`/book_reviews/${id}`),
+          axiosReq.get(`/comments/?book_review=${id}`),
+        ]);
+        setBookReview({ results: [book_review] });
+        setComments(comments);
       } catch (err) {
-        console.log(err);
       }
     };
 
-    setHasLoaded(false);
-    const timer = setTimeout(() => {
-      fetchBookReviews();
-    }, 1000);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [filter, query, pathname]);
+    handleMount();
+  }, [id]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={12}>
-        <i className={`fas fa-search ${styles.SearchIcon}`} />
-        <Form
-          className={styles.SearchBar}
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <Form.Control
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            type="text"
-            className="mr-sm-2"
-            placeholder="Search reviews"
-          />
-        </Form>
-
-        {hasLoaded ? (
-          <>
-            {book_reviews.results.length ? (
-              <InfiniteScroll
-                children={book_reviews.results.map((book_review) => (
-                  <BookReview key={book_review.id} {...book_review} setBookReviews={setBookReviews} />
-                ))}
-                dataLength={book_reviews.results.length}
-                loader={<Asset spinner />}
-                hasMore={!!book_reviews.next}
-                next={() => fetchMoreData(book_reviews, setBookReviews)}
-              />
-            ) : (
-              <Container className={appStyles.Content}>
-                <Asset src={NoResults} message={message} />
-              </Container>
-            )}
-          </>
-        ) : (
-          <Container className={appStyles.Content}>
-            <Asset spinner />
-          </Container>
-        )}
+        <BookReview {...book_review.results[0]} setBookReviews={setBookReview} bookReviewPage />
+        <Container className={appStyles.Content}>
+          {currentUser ? (
+            <CommentCreateForm
+              profile_id={currentUser.profile_id}
+              profileImage={profile_pic}
+              book_review={id}
+              setBookReview={setBookReview}
+              setComments={setComments}
+            />
+          ) : comments.results.length ? (
+            "Comments"
+          ) : null}
+          {comments.results.length ? (
+            <InfiniteScroll
+              children={comments.results.map((comment) => (
+                <Comment
+                  key={comment.id}
+                  {...comment}
+                  setBookReview={setBookReview}
+                  setComments={setComments}
+                />
+              ))}
+              dataLength={comments.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!comments.next}
+              next={() => fetchMoreData(comments, setComments)}
+            />
+          ) : currentUser ? (
+            <span>No comments yet 😿 be the first to comment!</span>
+          ) : (
+            <span>No comments... 😿</span>
+          )}
+        </Container>
       </Col>
     </Row>
   );
 }
 
-export default BookReviewsPage;
+export default BookReviewPage;

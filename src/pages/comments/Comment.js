@@ -12,7 +12,7 @@ import { axiosRes } from "../../api/axiosDefaults";
 const Comment = (props) => {
   const {
     profile_id,
-    profile_image,
+    profile_pic,
     owner,
     updated_at,
     content,
@@ -49,7 +49,7 @@ const Comment = (props) => {
       <hr />
       <Media>
         <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={profile_image} />
+          <Avatar src={profile_pic} />
         </Link>
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>
@@ -59,7 +59,7 @@ const Comment = (props) => {
               id={id}
               profile_id={profile_id}
               content={content}
-              profileImage={profile_image}
+              profileImage={profile_pic}
               setComments={setComments}
               setShowEditForm={setShowEditForm}
             />
