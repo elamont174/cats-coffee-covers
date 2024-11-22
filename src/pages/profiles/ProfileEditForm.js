@@ -27,10 +27,14 @@ const ProfileEditForm = () => {
 
   const [profileData, setProfileData] = useState({
     name: "",
-    content: "",
-    image: "",
+    profile_image: "",
+    bio: "",
+    location: "",
+    currently_reading: "",
+    favourite_coffee: "",
+    pets_name: "",
   });
-  const { name, content, image } = profileData;
+  const { name, profile_image, bio, location, currently_reading, favourite_coffee, pets_name } = profileData;
 
   const [errors, setErrors] = useState({});
 
@@ -39,10 +43,9 @@ const ProfileEditForm = () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image } = data;
-          setProfileData({ name, content, image });
+          const { name, profile_image, bio, location, currently_reading, favourite_coffee, pets_name } = data;
+          setProfileData({ name, profile_image, bio, location, currently_reading, favourite_coffee, pets_name });
         } catch (err) {
-          console.log(err);
           history.push("/");
         }
       } else {
@@ -64,21 +67,25 @@ const ProfileEditForm = () => {
     event.preventDefault();
     const formData = new FormData();
     formData.append("name", name);
-    formData.append("content", content);
+    formData.append("bio", bio);
+    formData.append("location", location);
+    formData.append("currently_reading", currently_reading);
+    formData.append("favourite_coffee", favourite_coffee);
+    formData.append("pets_name", pets_name);
 
     if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
+      formData.append("profile_image", imageFile?.current?.files[0]);
     }
 
     try {
       const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
       setCurrentUser((currentUser) => ({
         ...currentUser,
-        profile_pic: data.image,
+        profile_image: data.profile_image,
       }));
       history.goBack();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setErrors(err.response?.data);
     }
   };
@@ -89,10 +96,46 @@ const ProfileEditForm = () => {
         <Form.Label>Bio</Form.Label>
         <Form.Control
           as="textarea"
-          value={content}
+          value={bio}
           onChange={handleChange}
-          name="content"
-          rows={7}
+          name="bio"
+          rows={3}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          as="text"
+          value={location}
+          onChange={handleChange}
+          name="location"
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>CUrrently reading</Form.Label>
+        <Form.Control
+          as="text"
+          value={currently_reading}
+          onChange={handleChange}
+          name="currently_reading"
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Favourite coffee</Form.Label>
+        <Form.Control
+          as="text"
+          value={favourite_coffee}
+          onChange={handleChange}
+          name="favourite_coffee"
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Pets name</Form.Label>
+        <Form.Control
+          as="text"
+          value={pets_name}
+          onChange={handleChange}
+          name="pets_name"
         />
       </Form.Group>
 
@@ -119,12 +162,12 @@ const ProfileEditForm = () => {
         <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
           <Container className={appStyles.Content}>
             <Form.Group>
-              {image && (
+              {profile_image && (
                 <figure>
-                  <Image src={image} fluid />
+                  <Image src={profile_image} fluid />
                 </figure>
               )}
-              {errors?.image?.map((message, idx) => (
+              {errors?.profile_image?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
                   {message}
                 </Alert>
@@ -145,7 +188,7 @@ const ProfileEditForm = () => {
                   if (e.target.files.length) {
                     setProfileData({
                       ...profileData,
-                      image: URL.createObjectURL(e.target.files[0]),
+                      profile_image: URL.createObjectURL(e.target.files[0]),
                     });
                   }
                 }}

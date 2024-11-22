@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Media } from "react-bootstrap";
+import Media from "react-bootstrap/Media";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { MoreDropdown } from "../../components/MoreDropdown";
@@ -12,12 +12,12 @@ import { axiosRes } from "../../api/axiosDefaults";
 const Comment = (props) => {
   const {
     profile_id,
-    profile_pic,
+    profile_image,
     owner,
     updated_at,
     content,
     id,
-    setPost,
+    setBookReview,
     setComments,
   } = props;
 
@@ -28,11 +28,11 @@ const Comment = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/comments/${id}/`);
-      setPost((prevPost) => ({
+      setBookReview((prevBookReview) => ({
         results: [
           {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count - 1,
+            ...prevBookReview.results[0],
+            comments_count: prevBookReview.results[0].comments_count - 1,
           },
         ],
       }));
@@ -49,7 +49,7 @@ const Comment = (props) => {
       <hr />
       <Media>
         <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={profile_pic} />
+          <Avatar src={profile_image} />
         </Link>
         <Media.Body className="align-self-center ml-2">
           <span className={styles.Owner}>{owner}</span>
@@ -59,7 +59,7 @@ const Comment = (props) => {
               id={id}
               profile_id={profile_id}
               content={content}
-              profileImage={profile_pic}
+              profileImage={profile_image}
               setComments={setComments}
               setShowEditForm={setShowEditForm}
             />

@@ -22,7 +22,7 @@ function BookReviewPage() {
   const [book_review, setBookReview] = useState({ results: [] });
 
   const currentUser = useCurrentUser();
-  const profile_pic = currentUser?.profile_pic;
+  const profile_image = currentUser?.profile_image;
   const [comments, setComments] = useState({ results: [] });
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function BookReviewPage() {
           {currentUser ? (
             <CommentCreateForm
               profile_id={currentUser.profile_id}
-              profileImage={profile_pic}
+              profileImage={profile_image}
               book_review={id}
               setBookReview={setBookReview}
               setComments={setComments}

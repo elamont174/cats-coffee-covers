@@ -104,7 +104,7 @@ function BookReviewEditForm() {
         </Alert>
       ))} 
 
-<Form.Group>
+      <Form.Group>
         <Form.Label>Author</Form.Label>
         <Form.Control
           type="text"
@@ -119,7 +119,7 @@ function BookReviewEditForm() {
         </Alert>
       ))}
 
-<Form.Group>
+      <Form.Group>
         <Form.Label>Genre</Form.Label>
         <Form.Control
           type="text"

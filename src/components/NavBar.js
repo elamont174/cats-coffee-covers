@@ -1,5 +1,9 @@
 import React from "react";
-import { Navbar, Container, Nav, OverlayTrigger, Tooltip } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import logo from "../assets/ccc-logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -82,7 +86,7 @@ const NavBar = () => {
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
-        <Avatar src={currentUser?.profile_pic} text="Profile" height={40} />
+        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
       </NavLink>
     </>
   );
