@@ -62,7 +62,7 @@ function BookReviewCreateForm() {
     formData.append("image", imageInput.current.files[0]);
 
     try {
-      const { data } = await axiosReq.bookReview("/book_reviews/", formData);
+      const { data } = await axiosReq.post("/book_reviews/", formData);
       history.push(`/book_reviews/${data.id}`);
     } catch (err) {
       console.log(err);

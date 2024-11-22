@@ -34,7 +34,7 @@ export const CurrentUserProvider = ({ children }) => {
         } catch (err) {
           setCurrentUser((prevCurrentUser) => {
             if (prevCurrentUser) {
-              history.push("/login");
+              history.push("/register");
             }
             return null;
           });

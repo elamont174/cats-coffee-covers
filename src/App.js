@@ -46,8 +46,8 @@ function App() {
               />
             )}
           />
-          <Route exact path="/signin" render={() => <SignInForm />} />
-          <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/login" render={() => <SignInForm />} />
+          <Route exact path="/register" render={() => <SignUpForm />} />
           <Route exact path="/book_reviews/create" render={() => <BookReviewCreateForm />} />
           <Route exact path="/book_reviews/:id" render={() => <BookReviewPage />} />
           <Route render={() => <p>Page not found 😿</p>} />
