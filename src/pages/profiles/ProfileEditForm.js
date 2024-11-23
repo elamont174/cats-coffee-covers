@@ -91,63 +91,98 @@ const ProfileEditForm = () => {
   };
 
   const textFields = (
-    <>
+    <div className="text-center">
+      <Form.Group>
+        <Form.Label>Name</Form.Label>
+        <Form.Control
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.name?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))} 
+
       <Form.Group>
         <Form.Label>Bio</Form.Label>
         <Form.Control
-          as="textarea"
-          value={bio}
-          onChange={handleChange}
+          type="textarea"
           name="bio"
+          value={bio}
           rows={3}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Location</Form.Label>
-        <Form.Control
-          as="textarea"
-          value={location}
           onChange={handleChange}
-          name="location"
-          rows={1}
         />
       </Form.Group>
-      <Form.Group>
-        <Form.Label>Currently reading</Form.Label>
-        <Form.Control
-          as="textarea"
-          value={currently_reading}
-          onChange={handleChange}
-          name="currently_reading"
-          rows={1}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Favourite coffee</Form.Label>
-        <Form.Control
-          as="textarea"
-          value={favourite_coffee}
-          onChange={handleChange}
-          name="favourite_coffee"
-          rows={1}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Pet's name</Form.Label>
-        <Form.Control
-          as="textarea"
-          value={pets_name}
-          onChange={handleChange}
-          name="pets_name"
-          rows={1}
-        />
-      </Form.Group>
-
-      {errors?.content?.map((message, idx) => (
+      {errors?.bio?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
+
+      <Form.Group>
+        <Form.Label>Location</Form.Label>
+        <Form.Control
+          type="text"
+          name="location"
+          value={location}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.location?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Currently Reading</Form.Label>
+        <Form.Control
+          type="text"
+          name="currently_reading"
+          value={currently_reading}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.currently_reading?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+      <Form.Group>
+        <Form.Label>Favourite coffee</Form.Label>
+        <Form.Control
+          type="text"
+          name="favourite_coffee"
+          value={favourite_coffee}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.favourite_coffee?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
+<Form.Group>
+        <Form.Label>Pets name</Form.Label>
+        <Form.Control
+          type="text"
+          name="pets_name"
+          value={pets_name}
+          onChange={handleChange}
+        />
+      </Form.Group>
+      {errors?.pets_name?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
+
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => history.goBack()}
@@ -157,7 +192,7 @@ const ProfileEditForm = () => {
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         save
       </Button>
-    </>
+    </div>
   );
 
   return (
