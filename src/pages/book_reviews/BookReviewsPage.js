@@ -25,7 +25,6 @@ function BookReviewsPage({ message, filter = "" }) {
         setBookReviews(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
       }
     };
 

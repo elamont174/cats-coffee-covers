@@ -8,7 +8,6 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 import { Link, useHistory } from "react-router-dom";
-// import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
@@ -57,7 +56,6 @@ const BookReview = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
     }
   };
 
@@ -73,7 +71,6 @@ const BookReview = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
     }
   };
 

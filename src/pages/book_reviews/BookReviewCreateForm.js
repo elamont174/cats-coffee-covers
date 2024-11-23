@@ -65,7 +65,6 @@ function BookReviewCreateForm() {
       const { data } = await axiosReq.post("/book_reviews/", formData);
       history.push(`/book_reviews/${data.id}`);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

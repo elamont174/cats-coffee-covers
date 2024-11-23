@@ -53,7 +53,6 @@ function ProfilePage() {
         setProfileBookReviews(profileBookReviews);
         setHasLoaded(true);
       } catch (err) {
-        // console.log(err);
       }
     };
     fetchData();

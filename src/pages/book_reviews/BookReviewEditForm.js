@@ -39,7 +39,6 @@ function BookReviewEditForm() {
 
         is_owner ? setBookReviewData({ book_title, author, genre, your_review, image }) : history.push("/");
       } catch (err) {
-        console.log(err);
       }
     };
 
@@ -80,7 +79,6 @@ function BookReviewEditForm() {
       await axiosReq.put(`/book_reviews/${id}/`, formData);
       history.push(`/book_reviews/${id}`);
     } catch (err) {
-      console.log(err);
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }
