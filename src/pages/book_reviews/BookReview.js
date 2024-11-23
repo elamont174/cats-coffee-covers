@@ -47,7 +47,7 @@ const BookReview = (props) => {
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/likes/", { book_review: id });
+      const { data } = await axiosRes.post("/likes/", { post: id });
       setBookReviews((prevBookReviews) => ({
         ...prevBookReviews,
         results: prevBookReviews.results.map((book_review) => {
@@ -57,7 +57,7 @@ const BookReview = (props) => {
         }),
       }));
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   };
 
@@ -73,6 +73,7 @@ const BookReview = (props) => {
         }),
       }));
     } catch (err) {
+      console.log(err);
     }
   };
 
@@ -103,11 +104,11 @@ const BookReview = (props) => {
         {author && <Card.Title className="text-center">{author}</Card.Title>}
         {genre && <Card.Text>{genre}</Card.Text>}
         {your_review && <Card.Text>{your_review}</Card.Text>}
-        <div className={styles.BookReviewBar}>
+        <div className={styles.PostBar}>
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't like your own review!</Tooltip>}
+              overlay={<Tooltip>You can't like your own post!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
@@ -122,7 +123,7 @@ const BookReview = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to like review!</Tooltip>}
+              overlay={<Tooltip>Log in to like posts!</Tooltip>}
             >
               <i className="far fa-heart" />
             </OverlayTrigger>
