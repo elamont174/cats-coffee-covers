@@ -12,7 +12,6 @@ export const useSetProfileData = () => useContext(SetProfileDataContext);
 export const ProfileDataProvider = ({ children }) => {
   const [profileData, setProfileData] = useState({
     pageProfile: { results: [] },
-    popularProfiles: { results: [] },
   });
 
   const currentUser = useCurrentUser();
@@ -30,14 +29,9 @@ export const ProfileDataProvider = ({ children }) => {
             followHelper(profile, clickedProfile, data.id)
           ),
         },
-        popularProfiles: {
-          ...prevState.popularProfiles,
-          results: prevState.popularProfiles.results.map((profile) =>
-            followHelper(profile, clickedProfile, data.id)
-          ),
-        },
       }));
     } catch (err) {
+      console.log(err);
     }
   };
 
@@ -52,14 +46,9 @@ export const ProfileDataProvider = ({ children }) => {
             unfollowHelper(profile, clickedProfile)
           ),
         },
-        popularProfiles: {
-          ...prevState.popularProfiles,
-          results: prevState.popularProfiles.results.map((profile) =>
-            unfollowHelper(profile, clickedProfile)
-          ),
-        },
       }));
     } catch (err) {
+      console.log(err);
     }
   };
 
@@ -71,9 +60,9 @@ export const ProfileDataProvider = ({ children }) => {
         );
         setProfileData((prevState) => ({
           ...prevState,
-          popularProfiles: data,
         }));
       } catch (err) {
+        console.log(err);
       }
     };
 

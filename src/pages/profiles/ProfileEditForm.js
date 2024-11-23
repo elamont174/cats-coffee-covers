@@ -27,14 +27,14 @@ const ProfileEditForm = () => {
 
   const [profileData, setProfileData] = useState({
     name: "",
-    profile_image: "",
+    image: "",
     bio: "",
     location: "",
     currently_reading: "",
     favourite_coffee: "",
     pets_name: "",
   });
-  const { name, profile_image, bio, location, currently_reading, favourite_coffee, pets_name } = profileData;
+  const { name, image, bio, location, currently_reading, favourite_coffee, pets_name } = profileData;
 
   const [errors, setErrors] = useState({});
 
@@ -43,8 +43,8 @@ const ProfileEditForm = () => {
       if (currentUser?.profile_id?.toString() === id) {
         try {
           const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, profile_image, bio, location, currently_reading, favourite_coffee, pets_name } = data;
-          setProfileData({ name, profile_image, bio, location, currently_reading, favourite_coffee, pets_name });
+          const { name, image, bio, location, currently_reading, favourite_coffee, pets_name } = data;
+          setProfileData({ name, image, bio, location, currently_reading, favourite_coffee, pets_name });
         } catch (err) {
           history.push("/");
         }
@@ -74,14 +74,14 @@ const ProfileEditForm = () => {
     formData.append("pets_name", pets_name);
 
     if (imageFile?.current?.files[0]) {
-      formData.append("profile_image", imageFile?.current?.files[0]);
+      formData.append("image", imageFile?.current?.files[0]);
     }
 
     try {
       const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
       setCurrentUser((currentUser) => ({
         ...currentUser,
-        profile_image: data.profile_image,
+        image: data.image,
       }));
       history.goBack();
     } catch (err) {
@@ -105,37 +105,41 @@ const ProfileEditForm = () => {
       <Form.Group>
         <Form.Label>Location</Form.Label>
         <Form.Control
-          as="text"
+          as="textarea"
           value={location}
           onChange={handleChange}
           name="location"
+          rows={1}
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label>CUrrently reading</Form.Label>
+        <Form.Label>Currently reading</Form.Label>
         <Form.Control
-          as="text"
+          as="textarea"
           value={currently_reading}
           onChange={handleChange}
           name="currently_reading"
+          rows={1}
         />
       </Form.Group>
       <Form.Group>
         <Form.Label>Favourite coffee</Form.Label>
         <Form.Control
-          as="text"
+          as="textarea"
           value={favourite_coffee}
           onChange={handleChange}
           name="favourite_coffee"
+          rows={1}
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label>Pets name</Form.Label>
+        <Form.Label>Pet's name</Form.Label>
         <Form.Control
-          as="text"
+          as="textarea"
           value={pets_name}
           onChange={handleChange}
           name="pets_name"
+          rows={1}
         />
       </Form.Group>
 
@@ -162,12 +166,12 @@ const ProfileEditForm = () => {
         <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
           <Container className={appStyles.Content}>
             <Form.Group>
-              {profile_image && (
+              {image && (
                 <figure>
-                  <Image src={profile_image} fluid />
+                  <Image src={image} fluid />
                 </figure>
               )}
-              {errors?.profile_image?.map((message, idx) => (
+              {errors?.image?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
                   {message}
                 </Alert>
@@ -188,7 +192,7 @@ const ProfileEditForm = () => {
                   if (e.target.files.length) {
                     setProfileData({
                       ...profileData,
-                      profile_image: URL.createObjectURL(e.target.files[0]),
+                      image: URL.createObjectURL(e.target.files[0]),
                     });
                   }
                 }}

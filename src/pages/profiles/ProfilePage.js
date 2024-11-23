@@ -17,12 +17,12 @@ import {
   useProfileData,
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Button, Image } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import InfiniteScroll from "react-infinite-scroll-component";
 import BookReview from "../book_reviews/BookReview";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
-
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 function ProfilePage() {
@@ -32,7 +32,7 @@ function ProfilePage() {
   const currentUser = useCurrentUser();
   const { id } = useParams();
 
-  const {setProfileData, handleFollow, handleUnfollow} = useSetProfileData();
+  const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
   const { pageProfile } = useProfileData();
 
   const [profile] = pageProfile.results;
@@ -53,7 +53,7 @@ function ProfilePage() {
         setProfileBookReviews(profileBookReviews);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchData();
@@ -71,7 +71,7 @@ function ProfilePage() {
           />
         </Col>
         <Col lg={6}>
-          <h3 className="m-2">{profile?.owner}</h3>
+          <h3 className="m-2">{profile?.name}</h3>
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
               <div>{profile?.book_reviews_count}</div>
@@ -106,7 +106,12 @@ function ProfilePage() {
               </Button>
             ))}
         </Col>
-        {profile?.content && <Col className="p-3">{profile.content}</Col>}
+        <Col className="py-2 p-0 p-lg-2" lg={12}>
+        <strong>Bio:</strong>{profile?.bio && <Col className="p-3">{profile.bio}</Col>}
+        <strong>Location:</strong>{profile?.location && <Col className="p-3">{profile.location}</Col>}
+        <strong>Currently Reading:</strong>{profile?.bio && <Col className="p-3">{profile.currently_reading}</Col>}
+        <strong>Favourite coffee:</strong>{profile?.bio && <Col className="p-3">{profile.favourite_coffee}</Col>}
+        <strong>Pet's name:</strong>{profile?.bio && <Col className="p-3">{profile.pets_name}</Col>}</Col>
       </Row>
     </>
   );
@@ -114,7 +119,7 @@ function ProfilePage() {
   const mainProfileBookReviews = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s reviews</p>
+      <p className="text-center">{profile?.name}'s reviews</p>
       <hr />
       {profileBookReviews.results.length ? (
         <InfiniteScroll
@@ -129,7 +134,7 @@ function ProfilePage() {
       ) : (
         <Asset
           src={NoResults}
-          message={`No results found, ${profile?.owner} hasn't written a review yet!`}
+          message={`No results found, ${profile?.owner} hasn't written a review yet.`}
         />
       )}
     </>
