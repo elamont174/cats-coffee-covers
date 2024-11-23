@@ -22,21 +22,21 @@ import { axiosReq } from "../../api/axiosDefaults";
 function BookReviewCreateForm() {
   const [errors, setErrors] = useState({});
 
-  const [bookReviewData, setBookReviewData] = useState({
+  const [postData, setBookReviewData] = useState({
     book_title: "",
     author: "",
     genre: "",
     your_review: "",
     image: "",
   });
-  const { book_title, author, genre, your_review, image } = bookReviewData;
+  const { book_title, author, genre, your_review, image } = postData;
 
   const imageInput = useRef(null);
   const history = useHistory();
 
   const handleChange = (event) => {
     setBookReviewData({
-      ...bookReviewData,
+      ...postData,
       [event.target.name]: event.target.value,
     });
   };
@@ -45,7 +45,7 @@ function BookReviewCreateForm() {
     if (event.target.files.length) {
       URL.revokeObjectURL(image);
       setBookReviewData({
-        ...bookReviewData,
+        ...postData,
         image: URL.createObjectURL(event.target.files[0]),
       });
     }

@@ -8,7 +8,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 import { Link, useHistory } from "react-router-dom";
-import Avatar from "../../components/Avatar";
+// import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 
@@ -17,8 +17,6 @@ const BookReview = (props) => {
     id,
     owner,
     profile_id,
-    profile_image,
-    comments_count,
     likes_count,
     like_id,
     book_title,
@@ -44,7 +42,6 @@ const BookReview = (props) => {
       await axiosRes.delete(`/book_reviews/${id}/`);
       history.goBack();
     } catch (err) {
-      // console.log(err);
     }
   };
 
@@ -76,7 +73,6 @@ const BookReview = (props) => {
         }),
       }));
     } catch (err) {
-      // console.log(err);
     }
   };
 
@@ -85,7 +81,7 @@ const BookReview = (props) => {
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Link to={`/profiles/${profile_id}`}>
-            <Avatar src={profile_image} height={55} />
+            <i class="fa-solid fa-user"></i>
             {owner}
           </Link>
           <div className="d-flex align-items-center">
@@ -132,10 +128,6 @@ const BookReview = (props) => {
             </OverlayTrigger>
           )}
           {likes_count}
-          <Link to={`/book_reviews/${id}`}>
-            <i className="far fa-comments" />
-          </Link>
-          {comments_count}
         </div>
       </Card.Body>
     </Card>

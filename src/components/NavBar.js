@@ -11,7 +11,6 @@ import {
   useCurrentUser,
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
-import Avatar from "./Avatar";
 import axios from "axios";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 import { removeTokenTimestamp } from "../utils/utils";
@@ -86,7 +85,12 @@ const NavBar = () => {
         className={styles.NavLink}
         to={`/profiles/${currentUser?.profile_id}`}
       >
-        <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
+        <OverlayTrigger
+              placement="bottom"
+              overlay={<Tooltip>Profile</Tooltip>}
+            >
+              <i class="fa-solid fa-user"></i>
+            </OverlayTrigger>
       </NavLink>
     </>
   );
