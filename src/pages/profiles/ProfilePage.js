@@ -107,12 +107,12 @@ function ProfilePage() {
             ))}
         </Col>
         <Col className="py-2 p-0 p-lg-2" lg={12}>
-        {profile?.name && <Col className="p-3"><strong>My name is </strong>{profile.name}</Col>}
-        {profile?.bio && <Col className="p-3"><strong>Bio: </strong>{profile.bio}</Col>}
-        {profile?.location && <Col className="p-3"><strong>Location: </strong>{profile.location}</Col>}
-        {profile?.bio && <Col className="p-3"><strong>Currently Reading: </strong>{profile.currently_reading}</Col>}
-        {profile?.bio && <Col className="p-3"><strong>Favourite coffee: </strong>{profile.favourite_coffee}</Col>}
-        {profile?.bio && <Col className="p-3"><strong>Pet's name: </strong>{profile.pets_name}</Col>}</Col>
+        {profile?.name && profile?.location && profile?.currently_reading && profile?.favourite_coffee && profile?.pets_name && profile?.bio ? 
+        (<p>Hello! My name is {profile.name} and I live in {profile.location}.<br />
+        I am currently reading {profile.currently_reading} and my coffee of choice is {profile.favourite_coffee}. 
+        I have a pet called {profile.pets_name}.<br />
+        {profile.bio}</p>) : null}
+          </Col>
       </Row>
     </>
   );
