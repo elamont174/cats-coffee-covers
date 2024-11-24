@@ -128,7 +128,7 @@ This is the README for the Front-end React application - other information can b
 
 ### Features
 #### Profiles
-- ![Profile screenrecord](public/images/profile.mp4)
+- ![Profile screenrecord](public/images/profile.gif)
 - The profile page has a profile photo, the number of reviews that the user has written, the number of followers they have, the number of people that they follow and a list of their reviews with attached photos. 
 - There is also an information paragraph which is populated from information given by the user in the 'Edit profile' page.
 - You can follow other users if you are logged in by clicking the 'follow' button. This changes into an 'unfollow' button which can be used to unfollow the user if you change your mind. 
