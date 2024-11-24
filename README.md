@@ -16,7 +16,7 @@ This is the README for the Front-end React application - other information can b
 ## Agile methodology
 - A project board was set up and the project divided into user stories.
 - MoSCoW (must have, should have, could have) prioritisation was used to prioritise the importance of tasks. 
-- The project board was used for time management and to keep track of tasks.
+- The project board was used to organise sprints (for time management) and to keep track of tasks.
 - The project board can be found [here](https://github.com/users/elamont174/projects/7/views/1). 
 - ![Project board in action](public/images/project-board.png)
 - ![Project board in action](public/images/project-board2.png)
@@ -26,14 +26,14 @@ This is the README for the Front-end React application - other information can b
 ### User stories
 **Must haves**
 
-- *As a user I can create an account so that I can access feature for logged in users.*
+*As a user I can create an account so that I can access feature for logged in users.*
 - SUCCESS CRITERIA:
 - Users can create an account with a username and password
 - Users can access certain content as a logged in user but not a logged out user
 - RESULT
 - Users are able to create an account with a username and password in order to access their and other members profiles. They must be logged in to be able to like and leave reviews as well. 
 
-- *As a user, I have a customisable profile page where I can display information about myself.*
+*As a user, I have a customisable profile page where I can display information about myself.*
 - SUCCESS CRITERIA:
 - Users can read their own and others profile pages
 - Users can edit their own profile pages but NOT others
@@ -41,43 +41,43 @@ This is the README for the Front-end React application - other information can b
 - RESULT
 - Profile pages are created upon registration with a default image. Profile pages can be edited when users are logged in.
 
-- *As a user, I can log-in to the site to access content that can only be accessed by logged-in users.*
+*As a user, I can log-in to the site to access content that can only be accessed by logged-in users.*
 - SUCCESS CRITERIA:
 - Users can log-in and log-out easily
 - RESULT
 - There is a log-in button displayed when a user is logged out and vice versa. This can easily be clicked. 
 - Users must be logged in to be able to like and leave reviews. 
 
-- *As a user, I can create book reviews to share my views with the community.*
+*As a user, I can create book reviews to share my views with the community.*
 - SUCCESS CRITERIA:
 - User can create a review with Book Title, Author, Genre, Content review and a photo
 - RESULT
 - When logged in, users can click "new review" and create a new review
 
-- *As a user I can view the review page so that I can read the review.*
+*As a user I can view the review page so that I can read the review.*
 - SUCCESS CRITERIA:
 - Clicking on the review makes it easier to read
 - RESULT
 - Clicking on the review takes you to it's individual page. From there, if you own the review, you can edit or delete the review.
 - You can like the review if you don't own it. 
 
-- *As the review owner I can edit my review so that I can make corrections or update my post after it was created*
+*As the review owner I can edit my review so that I can make corrections or update my post after it was created*
 - SUCCESS:
 - The user who created the review can edit the review
 - Other users cannot edit the review
 - RESULT
 - When you click on the review, you can then click another button which allows you to edit the review but this doesn't work if you don't own the review.
 
-- *As the review owner I can delete my review.*
+*As the review owner I can delete my review.*
 - SUCCESS CRITERIA:
 - The user who created the review has the option to delete it
 - Other users cannot delete the review
 - RESULT
-- - When you click on the review, you can then click another button which allows you to delete the review but this doesn't work if you don't own the review.
+- When you click on the review, you can then click another button which allows you to delete the review but this doesn't work if you don't own the review.
 
 **Should haves**
 
-- *As a user, I can search for a review by book title or genre so that I can find reviews I'm interested in.*
+*As a user, I can search for a review by book title or genre so that I can find reviews I'm interested in.*
 - SUCCESS CRITERIA:
 - ability to search for reviews by Book Title, Author, Genre and Reviewer
 - RESULT
@@ -85,33 +85,33 @@ This is the README for the Front-end React application - other information can b
 
 **Could haves**
 
-- *As a user, I can comment on book reviews so that I can share my views with others.*
+*As a user, I can comment on book reviews so that I can share my views with others.*
 - SUCCESS CRITERIA:
 - ability to comment on reviews as a user
 - RESULT
 - Feature isn't included in this iteration. This would be considered a 'future improvement'.
 
-- *As a user I can 'like' reviews to show that I like them.*
+*As a user I can 'like' reviews to show that I like them.*
 - SUCCESS CRITERIA:
 - the ability to like posts
 - RESULT
 - When logged in, users can like reviews that they didn't write. 
 
-- *As a user I am able to 'follow' my favourite profiles so I can keep up to date with their content.*
+*As a user I am able to 'follow' my favourite profiles so I can keep up to date with their content.*
 - SUCCESS CRITERIA:
 - ability to 'follow' another user
 - RESULT
 - Users can follow other users but can't follow themselves.
 
-- *As a user, I can't upload images which are too big and will disrupt the aesthetic of the page.*
-- *As a developer, the user can't upload images which are too big and could cause storage issues.*
+*As a user, I can't upload images which are too big and will disrupt the aesthetic of the page.*
+*As a developer, the user can't upload images which are too big and could cause storage issues.*
 - SUCCESS CRITERIA:
 - If a user tries to upload a large image, they will receive an error message and the photo won't be uploaded.
 - RESULT
 - Currently, the photo will not be uploaded, but the error message doesn't show. This would be considered a 'future improvement'. 
 
 ### Wireframes 
-- ![Design wireframe](public/images/initial wireframe.png)
+- ![Design wireframe](public/images/initial-wireframe.png)
 
 ### User experience
 ### Design
@@ -198,7 +198,7 @@ A user's profile photo: used in every user's profile.
 Allows a user to display a profile photo.
 
 **MoreDropdown.js**
-SHows three dots which expands into a dropdown menu when clicked: used when Editing Profiles or Editing Reviews.
+Shows three dots which expands into a dropdown menu when clicked: used when Editing Profiles or Editing Reviews.
 
 **NavBar.js**
 The navigation bar: this is used across every page.
@@ -210,15 +210,23 @@ Displays a 'Page not found' error message when an unknown link is clicked or an 
 ## Languages
 - HTML
 - CSS
-- BootStrap
+- Bootstrap
 - React
 
+## Libraries used
+- React is a JavaScript library used to build the user interface. 
+- React-Bootstrap was used to provide pre-built, responsive components.
+- Axios handled API requests between the React frontend and the Django REST API, allowing the Front-end to communicate with the Back-end.
+- React Router Dom was used for managing routing and navigation between different pages within the React frontend.
+
 ## Technologies used
-- GitHub
+- [GitHub](https://github.com/) was used to host the repository and as version control. 
+- [Heroku](https://www.heroku.com/) was used to deploy the frontend of the project.
 - [Leonardo Ai](https://app.leonardo.ai/) created all of the images - the profile photos and posts.
 - [ChatGPT](https://chatgpt.com/) created the book titles, author names and book reviews.
 - [Table to Markdown](https://tabletomarkdown.com/convert-spreadsheet-to-markdown/) created the table in my TESTING.md file.
 - [ImageColourPicker.com](https://imagecolorpicker.com/) was used to get the colourscheme from the logo. 
+- [FontAwesome](https://fontawesome.com/) was used to choose icons for the NavBar.
 
 ## Credits
 - I utilised the Code Institute Moments walkthrough to help me create my website and then adapted the code and created 2 unique models to make the project my own. 

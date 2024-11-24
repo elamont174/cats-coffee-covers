@@ -46,13 +46,13 @@
 ## Validators
 ### HTML
 - [W3C validator](https://validator.w3.org/) was used to validate the page source code of the site.
-- The validation came back clear.
+- The validation came back clear, except for some 'info' tags.
 - ![HTML validator](public/images/html-vali.png)
 
 ### CSS
 - [W3 Jigsaw validator](https://validator.w3.org/) was used to validate all CSS files.
 - The validation came back clear for every one.
-- ![CSS validator](src/styles/Asset.module.css)
+- ![CSS validator](public/images/asset.module.css-vali.png)
 <a href="http://jigsaw.w3.org/css-validator/check/referer">
     <img style="border:0;width:88px;height:31px"
         src="http://jigsaw.w3.org/css-validator/images/vcss-blue"
