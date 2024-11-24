@@ -88,7 +88,7 @@
 
 ## Bugs
 Bug 1. When setting up the repository, the preview wasn't working:
-- ![Bug](public/images/react bug.png) ![Bug](public/images/react bug2.png) ![Bug](public/images/react bug3.png)
+- ![Bug](public/images/react-bug.png) ![Bug](public/images/react-bug2.png) ![Bug](public/images/react-bug3.png)
 - I carried out the following steps:
 1. npm install webpack@latest
 2. npm audit fix
