@@ -13,6 +13,13 @@ This is the README for the Front-end React application - other information can b
 - The target audience is adults who like cats, books and coffee! 
 
 ## Agile methodology
+- A project board was set up and the project divided into user stories.
+- MoSCoW (must have, should have, could have) prioritisation was used to prioritise the importance of tasks. 
+- The project board was used for time management and to keep track of tasks.
+- The project board can be found [here](https://github.com/users/elamont174/projects/7/views/1). 
+- ![Project board in action](public/images/project-board.png)
+- ![Project board in action](public/images/project-board2.png)
+
 
 ## Front-end documentation
 ### User stories
@@ -105,7 +112,6 @@ This is the README for the Front-end React application - other information can b
 ### Wireframes 
 - ![Design wireframe](public/images/initial wireframe.png)
 
-
 ### User experience
 ### Design
 #### Colour scheme
@@ -121,12 +127,26 @@ This is the README for the Front-end React application - other information can b
 - ![Sniglet screenshot](public/images/sniglet.png)
 
 ### Features
-
 #### Profiles
+- ![Profile screenrecord](public/images/profile.mp4)
+- The profile page has a profile photo, the number of reviews that the user has written, the number of followers they have, the number of people that they follow and a list of their reviews with attached photos. 
+- There is also an information paragraph which is populated from information given by the user in the 'Edit profile' page.
+- You can follow other users if you are logged in by clicking the 'follow' button. This changes into an 'unfollow' button which can be used to unfollow the user if you change your mind. 
+- By clicking the three dots, you can edit the information on your profile, change your username and password. 
+- The information includes Name, Bio, Location, Currently Reading, Favourite Coffee and Pets Name. 
 
 #### Reviews
+- ![review screenshot](public/images/review.jpg)
+- You can create a new review by clicking the "+" in the navigation bar (if you are logged in).
+- When you create a review, it is added to your profile and also the homepage. If someone likes your review, it will be added to their liked page and if someone follows you it will be added to their 'feed'. 
+- You can edit or delete your review by clicking on the review you want to change/delete and then clicking the three dots. 
+- Reviews 
 
 #### Followers
+- You can follow a user by clicking the button on their profile.
+- ![follow button](public/images/follow.jpg)
+- You can unfollow a user by clicking the button again.
+- ![unfollow button](public/images/unfollow.jpg)
 
 
 #### Navigation
@@ -141,7 +161,6 @@ This is the README for the Front-end React application - other information can b
 - There are buttons for "Home", "Log-in" and "Register".
 - A bubble pops up with the name of the buttons when you hover over them and a contrasting colour highlights the button. 
 - Clicking the logo on the left will also take you to the homepage.
-
 
 
 ### Setting up a new repository
@@ -160,7 +179,7 @@ This is the README for the Front-end React application - other information can b
 9. Your app has been deployed! You can find it in "Open app".
 
 ### Security
-- A Secret Key was created which was kept secret and kept private in env.py.
+- A Secret Key was created which was kept private in env.py.
 
 ### Testing 
 Please see separate [TESTING.md](TESTING.md) file for all testing.
