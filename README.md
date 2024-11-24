@@ -8,6 +8,7 @@ This is the README for the Front-end React application - other information can b
 - Users can create their own profile where they can share what they are currently reading, what their favourite coffee is and the name of their pet.
 - Users can also leave reviews of books that they have recently read with an accompanying photo. 
 - When exploring the site, users can like other members reviews to show their appreciation. 
+- The deployed site can be found [here](https://cats-coffee-covers-ef0ac9a164ac.herokuapp.com/).
 
 ### Target Audience
 - The target audience is adults who like cats, books and coffee! 
