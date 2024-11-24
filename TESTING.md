@@ -102,3 +102,7 @@ Bug 1. When setting up the repository, the preview wasn't working:
 Bug 2. When trying to create a new post, the following error arose.
 - ![Bug](public/images/bug9.png) ![Bug](public/images/bug9.png)
 - I found that there was an error in the serializers.py file and that my JS tokens weren't synced up properly.
+
+Current Bug.
+- An image filter is set up where, if too large a photo is uploaded, an error message shows and the image is not allowed to be uploaded.
+- Currently, the photo will not be uploaded, but the error message doesn't show. This would be a future improvement. 

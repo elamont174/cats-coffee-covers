@@ -2,9 +2,15 @@
 This is the README for the Front-end React application - other information can be found in the Back-end repository documentation [here](https://github.com/elamont174/catscoffeecovers).
 
 ## Project Overview
-
+- Welcome to "Cats, Coffee & Covers".
+- ![responsive screenshot](public/images/responsive.png)
+- The website is a social media site where users can share their common interests of cats, reading and coffee.
+- Users can create their own profile where they can share what they are currently reading, what their favourite coffee is and the name of their pet.
+- Users can also leave reviews of books that they have recently read with an accompanying photo. 
+- When exploring the site, users can like other members reviews to show their appreciation. 
 
 ### Target Audience
+- The target audience is adults who like cats, books and coffee! 
 
 ## Agile methodology
 
@@ -17,6 +23,7 @@ This is the README for the Front-end React application - other information can b
 - Users can create an account with a username and password
 - Users can access certain content as a logged in user but not a logged out user
 - RESULT
+- Users are able to create an account with a username and password in order to access their and other members profiles. They must be logged in to be able to like and leave reviews as well. 
 
 - *As a user, I have a customisable profile page where I can display information about myself.*
 - SUCCESS CRITERIA:
@@ -24,33 +31,41 @@ This is the README for the Front-end React application - other information can b
 - Users can edit their own profile pages but NOT others
 - Some information will be optional and not displayed
 - RESULT
+- Profile pages are created upon registration with a default image. Profile pages can be edited when users are logged in.
 
 - *As a user, I can log-in to the site to access content that can only be accessed by logged-in users.*
 - SUCCESS CRITERIA:
 - Users can log-in and log-out easily
 - RESULT
+- There is a log-in button displayed when a user is logged out and vice versa. This can easily be clicked. 
+- Users must be logged in to be able to like and leave reviews. 
 
 - *As a user, I can create book reviews to share my views with the community.*
 - SUCCESS CRITERIA:
-- User can create a review with Book Title, Author, Genre, Content review and an optional photo
+- User can create a review with Book Title, Author, Genre, Content review and a photo
 - RESULT
+- When logged in, users can click "new review" and create a new review
 
 - *As a user I can view the review page so that I can read the review.*
 - SUCCESS CRITERIA:
 - Clicking on the review makes it easier to read
 - RESULT
+- Clicking on the review takes you to it's individual page. From there, if you own the review, you can edit or delete the review.
+- You can like the review if you don't own it. 
 
 - *As the review owner I can edit my review so that I can make corrections or update my post after it was created*
 - SUCCESS:
 - The user who created the review can edit the review
 - Other users cannot edit the review
 - RESULT
+- When you click on the review, you can then click another button which allows you to edit the review but this doesn't work if you don't own the review.
 
 - *As the review owner I can delete my review.*
 - SUCCESS CRITERIA:
 - The user who created the review has the option to delete it
 - Other users cannot delete the review
 - RESULT
+- - When you click on the review, you can then click another button which allows you to delete the review but this doesn't work if you don't own the review.
 
 **Should haves**
 
@@ -58,6 +73,7 @@ This is the README for the Front-end React application - other information can b
 - SUCCESS CRITERIA:
 - ability to search for reviews by Book Title, Author, Genre and Reviewer
 - RESULT
+- Feature isn't included in this iteration. This would be considered a 'future improvement'.
 
 **Could haves**
 
@@ -65,22 +81,26 @@ This is the README for the Front-end React application - other information can b
 - SUCCESS CRITERIA:
 - ability to comment on reviews as a user
 - RESULT
+- Feature isn't included in this iteration. This would be considered a 'future improvement'.
 
 - *As a user I can 'like' reviews to show that I like them.*
 - SUCCESS CRITERIA:
 - the ability to like posts
 - RESULT
+- When logged in, users can like reviews that they didn't write. 
 
 - *As a user I am able to 'follow' my favourite profiles so I can keep up to date with their content.*
 - SUCCESS CRITERIA:
 - ability to 'follow' another user
 - RESULT
+- Users can follow other users but can't follow themselves.
 
 - *As a user, I can't upload images which are too big and will disrupt the aesthetic of the page.*
 - *As a developer, the user can't upload images which are too big and could cause storage issues.*
 - SUCCESS CRITERIA:
 - If a user tries to upload a large image, they will receive an error message and the photo won't be uploaded.
 - RESULT
+- Currently, the photo will not be uploaded, but the error message doesn't show. This would be considered a 'future improvement'. 
 
 ### Wireframes 
 - ![Design wireframe](public/images/initial wireframe.png)
@@ -108,9 +128,20 @@ This is the README for the Front-end React application - other information can b
 
 #### Followers
 
-#### Navigation
 
-### Responsiveness
+#### Navigation
+- Navigation is easily achieved via the NavBar. 
+- If you are logged in, then the NavBar will look like this:
+- ![navbar loggedin](public/images/nav1.png)
+- There are buttons for "New Review", "Home", "Feed", "Liked", "Log-out" and "Profile".
+- A bubble pops up with the name of the buttons when you hover over them and a contrasting colour highlights the button. 
+- Clicking the logo on the left will also take you to the homepage.
+- If you are logged out, then the NavBar will look like this:
+- ![navbar loggedout](public/images/nav2.png)
+- There are buttons for "Home", "Log-in" and "Register".
+- A bubble pops up with the name of the buttons when you hover over them and a contrasting colour highlights the button. 
+- Clicking the logo on the left will also take you to the homepage.
+
 
 
 ### Setting up a new repository
@@ -136,9 +167,25 @@ Please see separate [TESTING.md](TESTING.md) file for all testing.
 
 ## Future improvements
 - With more time, I would add comment functionality to the posts. I would also add a search feature.
+- On a larger scale, the site would be expanded to also allow reviews of coffee shops without photos and allow posting of photos without reviews (for cat pictures). The idea being that the site is truly about 'Cats, Coffee & Covers'.
 
 ## Reusable React Components
+**Asset.js**
+Displays a spinner whenever a page is loading.
 
+**Avatar.js**
+A user's profile photo: used in every user's profile.
+Allows a user to display a profile photo.
+
+**MoreDropdown.js**
+SHows three dots which expands into a dropdown menu when clicked: used when Editing Profiles or Editing Reviews.
+
+**NavBar.js**
+The navigation bar: this is used across every page.
+It allows the user to easily navigate between pages, log-in/out, access their profile (if logged-in), register (if logged out) and create new reviews.
+
+**NotFound.js**
+Displays a 'Page not found' error message when an unknown link is clicked or an incorrect url is typed into the search engine. 
 
 ## Languages
 - HTML
